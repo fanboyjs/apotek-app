@@ -1,7 +1,7 @@
 
 
 <nav class="bg-white sticky top-0 z-50 border-gray-200 border-b-2 ">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
     <a href="/" class="flex items-center w-fit">
         <img src="/icons/Logo-apotek.svg" class="h-20" alt="Logo" />
     </a>
