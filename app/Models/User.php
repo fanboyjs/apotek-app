@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Cart;
 use App\Models\ProductTransaction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,9 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'google_id',
-        'google_token',
-        'google_refresh_token',
     ];
 
     /**
@@ -61,5 +57,11 @@ class User extends Authenticatable
     public function product_transactions()
     {
         return $this->hasMany(ProductTransaction::class);
+    }
+  
+    // Tabel User dapat menerima banyak data dari tabel Socialite
+    public function socialite()
+    {
+        return $this->hasMany(Socialite::class);
     }
 }
