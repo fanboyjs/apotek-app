@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/cart', function () {
+    return view('cart.index');
+})->name('cart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
