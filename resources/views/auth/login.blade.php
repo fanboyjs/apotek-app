@@ -43,5 +43,9 @@
                 {{ __('Masuk') }}
             </x-primary-button>
         </div>
+
+        <div>
+            <a href="auth/redirect" class="text-blue">Masuk dengan google</a>
+        </div>
     </form>
 </x-guest-layout>
