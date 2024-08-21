@@ -13,6 +13,9 @@ Route::get('/', function () {
 Route::get('/cart', function () {
     return view('cart.index');
 })->name('cart');
+Route::get('/order', function () {
+    return view('order.index');
+})->name('order');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
