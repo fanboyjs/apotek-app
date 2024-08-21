@@ -1,6 +1,6 @@
 <x-client-layout>
     <section class="w-full h-full flex flex-1 flex-col ">
-        <div class="px-4 lg:px-20 w-full h-fit border flex flex-row justify-between items-center">
+        <div class="px-4 lg:px-20 w-full h-fit flex flex-row justify-between items-center">
             <h1 class="text-xl font-bold  uppercase">Keranjang</h1>
             <button class="flex flex-row gap-2 justify-center items-center">
                 <span class="font-medium text-sm text-gray-400">HAPUS SEMUA</span>
@@ -53,7 +53,9 @@
         <p class="text-2xl font-bold text-gray-700">Rp.490.000</p>
        </div>
        <div class="w-full flex justify-end lg:px-20">
-        <button type="button" class="text-white bg-blue-950 hover:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 uppercase ">checkout sekarang</button>
+            <a href="{{ route('order') }}">
+                <button type="button" class="text-white bg-blue-950 hover:bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 uppercase ">checkout sekarang</button>
+            </a>
         </div>
     </section>
 </x-client-layout>
