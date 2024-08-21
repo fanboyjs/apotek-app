@@ -48,7 +48,7 @@
     </section>
 
     <section class="wrapper !px-0 flex flex-col gap-2.5">
-      <h2 class="text-2xl font-bold text-blue-600 lg:text-3xl">Produk Terbaru</h2>
+      <h2 class="text-2xl font-bold text-blue-600 lg:text-3xl">Result : {{ $products->count() }}</h2>
       <div class="w-full h-full flex flex-1 flex-row flex-wrap justify-center  gap-4">
         @forelse ($products as $product)
           <div class="w-[300px] h-[400px] bg-white border border-gray-200 rounded-lg shadow">
