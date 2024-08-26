@@ -13,41 +13,28 @@
         <p class="text-lg text-center w-1/4 hidden lg:block  font-medium text-gray-400">Harga</p>
        </div>
        <div class="min-h-96  mt-10 px-2 lg:px-20 w-full flex flex-col gap-4 items-center">
+            
+        @foreach($cartItems as $item)
             <div class="w-full flex  flex-row justify-between items-center gap-10">
                 <div class="w-2/4  flex flex-row gap-4 items-center">
                     <div class=" w-fit lg:w-24 h-24 bg-slate-200 flex justify-center items-center rounded-lg">
-                        <img class="w-20 h-20" src="/images/obat-1.png" alt="">
+                        <img class="w-20 h-20" src="{{ Storage::url($item->product->photo) }}" alt="">
                     </div>
                     <div class="">
-                        <p class="text-base font-medium">Paracetamol</p>
+                        <p class="text-base font-medium">{{ $item->product->name }}</p>
                         <p class="text-gray-400">1 Pack</p>
                     </div>
                 </div>
                 <div class="w-1/4 h-fit flex justify-center items-center gap-4 md:gap-4">
                     <button type="button" class="text-gray-400 hover:text-white border border-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center ">-</button>
-                    <span class=" "> 0 </span>
+                    <span class=" "> {{ $item->quantity }} </span>
                     <button type="button" class="text-gray-400 hover:text-white border border-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center">+</button>
                 </div>
-                <p class="w-1/4 text-center hidden md:block font-medium text-gray-700">RP. 500.000</p>
+                <p class="w-1/4 text-center hidden md:block font-medium text-gray-700">Rp.{{ $item->product->price }}</p>
             </div>
-            <div class="w-full flex flex-row justify-between items-center gap-10">
-                <div class="w-2/4  flex flex-row gap-4 items-center">
-                    <div class=" w-fit lg:w-24 h-24 bg-slate-200 flex justify-center items-center rounded-lg">
-                        <img class="w-20 h-20" src="/images/obat-1.png" alt="">
-                    </div>
-                    <div class="">
-                        <p class="text-base font-medium">Paracetamol</p>
-                        <p class="text-gray-400">1 Pack</p>
-                    </div>
-                </div>
-                <div class="w-1/4 h-fit flex justify-center items-center gap-4 md:gap-4">
-                    <button type="button" class="text-gray-400 hover:text-white border border-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center ">-</button>
-                    <span class=" "> 0 </span>
-                    <button type="button" class="text-gray-400 hover:text-white border border-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-1 text-center">+</button>
-                </div>
-                <p class="w-1/4 text-center hidden md:block font-medium text-gray-700">RP. 500.000</p>
-            </div>
+        @endforeach
        </div>
+       
        <div class= "px-4 mt-10 lg:px-24 w-full flex flex-row justify-between items-center border-t border-slate-200 py-4">
         <p class="text-lg font-medium text-gray-400">Total</p>
         <p class="text-2xl font-bold text-gray-700">Rp.490.000</p>

@@ -29,9 +29,7 @@ Route::get('/category/{category}', function (Category $category) {
     ]);
 })->name('category');
 
-Route::get('/cart', function () {
-    return view('cart.index');
-})->name('cart');
+
 Route::get('/order', function () {
     return view('order.index');
 })->name('order');
@@ -54,6 +52,7 @@ Route::middleware('auth')->group(function () {
 // Add items to cart
 
 Route::get('/cart/add/{productId}/{userId}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/{userId}', [CartController::class, 'show'])->name('cart.show');
 
 
 

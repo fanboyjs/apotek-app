@@ -56,6 +56,11 @@
             aria-current="page">Home</a>
         </li>
         <li>
+          <a href="{{ route('cart.show', Auth::user()->id ?? 0) }}"
+            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+            aria-current="page">Keranjang</a>
+        </li>
+        <li>
           <a href="/"
             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Pesananan</a>
         </li>

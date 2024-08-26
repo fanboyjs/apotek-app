@@ -12,9 +12,13 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function show($userId)
     {
-        //
+        $cartItems = Cart::where('user_id', $userId)
+                     ->with('product') // Eager load the product details
+                     ->get();
+
+         return view('cart.index', compact('cartItems'));
     }
 
     /**
@@ -56,14 +60,6 @@ class CartController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cart $cart)
     {
         //
     }
