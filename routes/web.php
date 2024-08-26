@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -16,7 +17,7 @@ Route::get('/', function () {
         'categories' => $categories,
         'products'   => $products,
     ]);
-});
+})->name('home');
 
 Route::get('/category/{category}', function (Category $category) {
     $products = Product::where('category_id', $category->id)->with('category')->get();
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// Add items to cart
 
+Route::get('/cart/add/{productId}/{userId}', [CartController::class, 'add'])->name('cart.add');
 
 require __DIR__ . '/auth.php';

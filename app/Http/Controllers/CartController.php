@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -16,11 +18,24 @@ class CartController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Add new item into cart
      */
-    public function create()
+    public function add($productId, $userId)
     {
-        //
+        $product = Product::find($productId);
+        $user = User::find($userId);
+
+        $cart = new Cart();
+
+        $cart->quantity = 1;
+        $cart->user_id = $userId;
+        $cart->product_id = $productId;
+        $cart->save();
+
+        return redirect()->route('home');
+
+
+
     }
 
     /**
