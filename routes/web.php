@@ -55,4 +55,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/cart/add/{productId}/{userId}', [CartController::class, 'add'])->name('cart.add');
 
+
+
 require __DIR__ . '/auth.php';

@@ -25,6 +25,20 @@ class CartController extends Controller
         $product = Product::find($productId);
         $user = User::find($userId);
 
+        if(!$user){
+            session()->flash('status', 'Anda belum Login!');
+
+
+        return redirect()->back();
+        }
+
+        if($product){
+            session()->flash('status', 'Sudah ada dikeranjang!');
+
+
+        return redirect()->back();
+        }
+
         $cart = new Cart();
 
         $cart->quantity = 1;
@@ -32,10 +46,10 @@ class CartController extends Controller
         $cart->product_id = $productId;
         $cart->save();
 
-        return redirect()->route('home');
+        session()->flash('status', 'Berhasil ditambahkan');
 
 
-
+        return redirect()->back();
     }
 
     /**
