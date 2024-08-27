@@ -79,6 +79,38 @@ class CartController extends Controller
     {
         //
     }
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateQuantity(Request $request)
+    {
+        // Find the cart item
+        $item = Cart::find($request->item_id);
+
+        // Check if the item exists
+        if (!$item) {
+            return redirect()->back()->with('error', 'Item not found.');
+        }
+
+        // Perform the increment or decrement action
+        if ($request->action == 'increment') {
+            $item->quantity += 1;
+        }
+        if ($request->action == 'decrement' && $item->quantity > 1) {
+            $item->quantity -= 1;
+        }
+        if ($request->action == 'decrement' && $item->quantity == 1) {
+            $item->delete();
+            return redirect()->back();
+        }
+
+        // Save the updated quantity
+        $item->save();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Quantity updated successfully.');
+    }
+
 
     /**
      * Remove the specified resource from storage.
