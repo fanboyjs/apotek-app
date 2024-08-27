@@ -26,7 +26,9 @@ class CartController extends Controller
      */
     public function add($productId, $userId)
     {
-        $product = Product::find($productId);
+        $product = Cart::where('product_id', $productId)
+        ->where('user_id', $userId)
+        ->first();
         $user = User::find($userId);
 
         if(!$user){
@@ -38,7 +40,6 @@ class CartController extends Controller
 
         if($product){
             session()->flash('status', 'Sudah ada dikeranjang!');
-
 
         return redirect()->back();
         }
