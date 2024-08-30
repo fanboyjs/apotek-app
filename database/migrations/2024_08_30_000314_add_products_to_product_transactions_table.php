@@ -19,7 +19,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('product_transactions', function (Blueprint $table) {
-            $table->dropColumn('products'); // Drop the 'products' column if rolled back
+            $table->dropColumn('products');
         });
     }
 };

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTransactionController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
@@ -55,6 +56,14 @@ Route::get('/cart/add/{productId}/{userId}', [CartController::class, 'add'])->na
 Route::get('/cart/{userId}', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
 
+// Transaction
 
+Route::get('/order', [ProductTransactionController::class, 'create'])->name('order');
+Route::post('/create-transaction', [ProductTransactionController::class, 'store'])->name('transactions.store');
+
+// Riwayat Pesanan
+Route::get('/history', function () {
+    return view('history.index');
+})->name('history');
 
 require __DIR__ . '/auth.php';
