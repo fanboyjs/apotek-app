@@ -61,12 +61,12 @@
                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
 
-                                {{ __('Keluar') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+                {{ __('Keluar') }}
+              </x-dropdown-link>
+            </form>
+          </x-slot>
+        </x-dropdown>
+      </div>
 
 
       <!-- Hamburger -->
@@ -112,11 +112,11 @@
             onclick="event.preventDefault();
                                         this.closest('form').submit();">
 
-                        {{ __('Keluar') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
+            {{ __('Keluar') }}
+          </x-responsive-nav-link>
+        </form>
+      </div>
     </div>
+  </div>
   </div>
 </nav>

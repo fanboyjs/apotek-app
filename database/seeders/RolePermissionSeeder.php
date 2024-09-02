@@ -22,12 +22,19 @@ class RolePermissionSeeder extends Seeder
             'name' => 'buyer',
         ]);
 
-        $user = User::create([
-            'name'     => 'Rama Pemilik',
-            'email'    => 'rama@pemilik.com',
+        $admin = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('123456789'),
         ]);
 
-        $user->assignRole($ownerRole);
+        $consumer = User::create([
+            'name' => 'Consumer',
+            'email' => 'consumer@gmail.com',
+            'password' => bcrypt('123456789'),
+        ]);
+
+        $admin->assignRole($ownerRole);
+        $consumer->assignRole($buyerRole);
     }
 }

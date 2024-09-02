@@ -1,34 +1,25 @@
 <?php
 
-use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $categories = Category::all();
-    $products = Product::with('category')->orderBy('id', 'DESC')->get();
-
-    return view('home', [
-        'categories' => $categories,
-        'products'   => $products,
-    ]);
-})->name('home');
+Route::get('/', [FrontController::class, 'index'])->name('home');
 
 Route::get('/category/{category}', function (Category $category) {
     $products = Product::where('category_id', $category->id)->with('category')->get();
     $categories = Category::all();
     return view('category', [
-        'products'   => $products,
-        'category'   => $category,
+        'products' => $products,
+        'category' => $category,
         'categories' => $categories,
     ]);
 })->name('category');
-
 
 Route::get('/order', function () {
     return view('order.index');
@@ -54,7 +45,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/cart/add/{productId}/{userId}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/{userId}', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
-
-
 
 require __DIR__ . '/auth.php';
