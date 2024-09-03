@@ -1,18 +1,10 @@
-<x-app-layout>
-  <x-slot name="header">
-    <div class="flex flex-row w-full justify-between items-center">
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ Auth::user()->hasRole('owner') ? __('Apotek Orders') : __('My Transaction') }}
-      </h2>
-    </div>
-  </x-slot>
-
-  <div class="py-12">
+<x-client-layout>
+  <div class="">
     <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden gap-y-5 p-10 shadow-sm sm:rounded-lg">
         @forelse ($product_transactions as $transaction)
           <div class="item-card flex p-3 flex-row justify-between items-center">
-            <a href="{{ route('product_transactions.show', $transaction) }}" class="font-bold py-3 px-5 ">
+            <a href="" class="font-bold py-3 px-5 ">
               <div class="flex flex-row gap-x-3 items-center">
                 <div>
                   <p class="text-base font-bold">Total Transaksi</p>
@@ -54,4 +46,4 @@
       </div>
     </div>
   </div>
-</x-app-layout>
+</x-client-layout>

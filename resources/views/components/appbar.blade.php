@@ -61,8 +61,8 @@
             aria-current="page">Keranjang</a>
         </li>
         <li>
-          <a href="/"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Pesananan</a>
+          <a href="{{ route('product_transactions.index') }}"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Transaksi</a>
         </li>
         <li class="flex items-center gap-2 h-7 text-blue-500">
           <img src="{{ asset('icons/avatar.svg') }}" class="h-full rounded-full" alt="">

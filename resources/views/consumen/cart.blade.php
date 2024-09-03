@@ -23,8 +23,8 @@
           $itemTotal = $item->product->price * $item->quantity;
           $totalPrice += $itemTotal;
         @endphp
-        <div class="w-full flex  flex-row justify-between items-center gap-10">
-          <div class="w-2/4  flex flex-row gap-4 items-center">
+        <div class="w-full flex flex-row justify-between items-center gap-10">
+          <div class="w-2/4 flex flex-row gap-4 items-center">
             <div class="w-fit lg:w-24 h-24 bg-slate-200 flex justify-center items-center rounded-lg">
               <img class="h-full" src="{{ Storage::url($item->product->photo) }}" alt="">
             </div>
@@ -35,7 +35,7 @@
           </div>
           <div class="w-1/4 h-fit flex justify-center items-center gap-4 md:gap-4">
             <!-- Decrement Button -->
-            <form action="{{ route('cart.quantity') }}" method="POST" style="display:inline;">
+            <form action="{{ route('cart.updateQuantity') }}" method="POST" style="display:inline;">
               @csrf
               <input type="hidden" name="item_id" value="{{ $item->id }}">
               <input type="hidden" name="action" value="decrement">
@@ -47,7 +47,7 @@
             <span>{{ $item->quantity }}</span>
 
             <!-- Increment Button -->
-            <form action="{{ route('cart.quantity') }}" method="POST" style="display:inline;">
+            <form action="{{ route('cart.updateQuantity') }}" method="POST" style="display:inline;">
               @csrf
               <input type="hidden" name="item_id" value="{{ $item->id }}">
               <input type="hidden" name="action" value="increment">

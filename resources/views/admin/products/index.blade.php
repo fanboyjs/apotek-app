@@ -39,7 +39,7 @@
                   {{ $product->name }}
                 </h3>
                 <p class="text-base text-blue-500 font-bold">
-                  Rp {{ $product->price }}
+                  Rp {{ number_format($product->price, 0, ',', '.') }}
                 </p>
               </div>
             </div>

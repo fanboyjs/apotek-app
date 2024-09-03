@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('product_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('address');
-            $table->string('post_code');
             $table->string('phone_number');
+            $table->string('subdistrict');
+            $table->string('address');
+            $table->text('notes');
             $table->string('proof');
-            $table->string('city');
             $table->boolean('is_paid');
             $table->unsignedBigInteger('total_amount');
-            $table->text('notes');
             $table->timestamps();
         });
     }

@@ -43,7 +43,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password'          => 'hashed',
+            'password' => 'hashed',
         ];
     }
 
@@ -58,7 +58,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProductTransaction::class);
     }
-  
+
     // Tabel User dapat menerima banyak data dari tabel Socialite
     public function socialite()
     {

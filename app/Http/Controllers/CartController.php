@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -15,10 +15,10 @@ class CartController extends Controller
     public function show($userId)
     {
         $cartItems = Cart::where('user_id', $userId)
-                     ->with('product') // Eager load the product details
-                     ->get();
+            ->with('product') // Eager load the product details
+            ->get();
 
-         return view('cart.index', compact('cartItems'));
+        return view('consumen.cart', compact('cartItems'));
     }
 
     /**
@@ -27,21 +27,20 @@ class CartController extends Controller
     public function add($productId, $userId)
     {
         $product = Cart::where('product_id', $productId)
-        ->where('user_id', $userId)
-        ->first();
+            ->where('user_id', $userId)
+            ->first();
         $user = User::find($userId);
 
-        if(!$user){
+        if (!$user) {
             session()->flash('status', 'Anda belum Login!');
 
-
-        return redirect()->back();
+            return redirect()->back();
         }
 
-        if($product){
+        if ($product) {
             session()->flash('status', 'Sudah ada dikeranjang!');
 
-        return redirect()->back();
+            return redirect()->back();
         }
 
         $cart = new Cart();
@@ -53,8 +52,16 @@ class CartController extends Controller
 
         session()->flash('status', 'Berhasil ditambahkan');
 
-
         return redirect()->back();
+    }
+
+    public function order()
+    {
+        $user = Auth::user();
+
+        $my_orders = $user->carts()->with('product')->get();
+
+        return view('consumen.order', ['name' => 'Dias Pangestu', 'my_orders' => $my_orders]);
     }
 
     /**
@@ -85,33 +92,29 @@ class CartController extends Controller
      */
     public function updateQuantity(Request $request)
     {
-        // Find the cart item
-        $item = Cart::find($request->item_id);
+        $cartItem = Cart::find($request->item_id);
 
-        // Check if the item exists
-        if (!$item) {
-            return redirect()->back()->with('error', 'Item not found.');
+        if (!$cartItem) {
+            return redirect()->back()->with('error', 'Item tidak ditemukan.');
         }
 
-        // Perform the increment or decrement action
         if ($request->action == 'increment') {
-            $item->quantity += 1;
-        }
-        if ($request->action == 'decrement' && $item->quantity > 1) {
-            $item->quantity -= 1;
-        }
-        if ($request->action == 'decrement' && $item->quantity == 1) {
-            $item->delete();
-            return redirect()->back();
+            $cartItem->quantity += 1;
+            $cartItem->save();
+            return redirect()->back()->with('success', 'Jumlah item diperbarui.');
+        } elseif ($request->action == 'decrement') {
+            if ($cartItem->quantity > 1) {
+                $cartItem->quantity -= 1;
+                $cartItem->save();
+                return redirect()->back()->with('success', 'Jumlah item diperbarui.');
+            } else {
+                $cartItem->delete();
+                return redirect()->back()->with('success', 'Item dihapus dari keranjang.');
+            }
         }
 
-        // Save the updated quantity
-        $item->save();
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Quantity updated successfully.');
+        return redirect()->back()->with('error', 'Aksi tidak valid.');
     }
-
 
     /**
      * Remove the specified resource from storage.

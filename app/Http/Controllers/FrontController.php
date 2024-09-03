@@ -17,4 +17,14 @@ class FrontController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function category(Category $category)
+    {
+        $products = Product::where('category_id', $category->id)->with('category')->get();
+        $categories = Category::all();
+        return view('category', [
+            'products' => $products,
+            'categories' => $categories,
+        ]);
+    }
 }
