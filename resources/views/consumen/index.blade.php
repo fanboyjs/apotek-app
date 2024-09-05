@@ -42,7 +42,7 @@
     </div>
   </section>
   {{-- List Obat --}}
-  <section class="max-w-screen-xl h-full flex-1 border flex-col gap-8 mt-10 lg:mt-30 mx-auto px-4 ">
+  <section class="max-w-screen-xl h-full flex-1  flex-col gap-8 mt-10 lg:mt-30 mx-auto px-4 ">
     <!-- Categories -->
     <section class="wrapper !px-0 flex flex-col gap-2.5">
       <h2 class="text-2xl font-bold text-blue-600 lg:text-3xl">Kategori</h2>

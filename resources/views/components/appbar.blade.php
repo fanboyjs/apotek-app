@@ -65,17 +65,49 @@
             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Transaksi</a>
         </li>
         <li class="flex items-center gap-2 h-7 text-blue-500">
-          <img src="{{ asset('icons/avatar.svg') }}" class="h-full rounded-full" alt="">
-          @auth
-            <a href="{{ route('login') }}">
-              {{ Auth::user()->name }}
-            </a>
-          @endauth
+          
           @guest
-            <a href="{{ route('login') }}"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Login</a>
+            <div class="flex items-center gap-2 h-7 text-blue-500">
+              <img src="{{ asset('icons/avatar.svg') }}" class="h-full rounded-full" alt="">
+              <a href="{{ route('login') }}"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Login</a>
+            </div>
           @endguest
         </li>
+        <li>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto ">
+            @auth
+            <div class="flex items-center gap-2 h-7 text-blue-500">
+              <img src="{{ asset('icons/avatar.svg') }}" class="h-full rounded-full" alt="">
+              {{ Auth::user()->name }}
+            </div>
+            
+          @endauth
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+              <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
+                <li>
+                  <a href="{{ route('dashboard') }}" class="block px-4 py-2 hover:bg-gray-100 ">Dashboard</a>
+                </li>
+                <li>
+                  <a href="/profile" class="block px-4 py-2 hover:bg-gray-100 ">Profile</a>
+                </li>
+              </ul>
+              <div class="py-1">
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+        
+                  <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+        
+                    {{ __('Keluar') }}
+                  </x-responsive-nav-link>
+                </form>
+              </div>
+          </div>
+      </li>
       </ul>
     </div>
   </div>
