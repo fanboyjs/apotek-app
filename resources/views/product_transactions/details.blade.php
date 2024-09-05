@@ -117,8 +117,8 @@
       @endrole
 
       @role('buyer')
-        <a href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Contact
-          Admin</a>
+        <button class="w-fit mt-4 font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Contact
+          Admin</button>
       @endrole
     </div>
   </div>

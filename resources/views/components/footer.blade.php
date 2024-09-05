@@ -1,6 +1,6 @@
 
 
-<footer class="bg-white border-t-2 border-gray-100 rounded-lg shadow">
+<footer class="bg-white border-t-2 mt-40 border-gray-100 rounded-lg shadow">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="{{ route('home') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
