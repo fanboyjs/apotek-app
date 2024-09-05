@@ -12,10 +12,10 @@
 
 <body>
   <x-appbar />
-  <main class=" md:p-20 bg-zinc-50">
+  <main class="min-h-[100vh] md:p-20 bg-zinc-50">
     {{ $slot }}
   </main>
-
+  <x-footer/>
 </body>
 
 </html>
