@@ -15,7 +15,7 @@
       </svg>
     </button>
   </div>
-  <section class="w-full h-full flex-1 flex-col px-2">
+  <section class="w-full h-full  flex-1 flex-col px-2">
     <div class="absolute left-1/2 transform -translate-x-1/2 max-w-[800px] flex items-center justify-center">
       <img src="/images/farma.png" alt="" class="object-cover opacity-20 xl:opacity-50">
     </div>
@@ -42,16 +42,16 @@
     </div>
   </section>
   {{-- List Obat --}}
-  <section class="w-full h-full flex flex-col gap-8 mt-10 lg:mt-30 px-2">
+  <section class="max-w-screen-xl h-full flex-1 border flex-col gap-8 mt-10 lg:mt-30 mx-auto px-4 ">
     <!-- Categories -->
     <section class="wrapper !px-0 flex flex-col gap-2.5">
       <h2 class="text-2xl font-bold text-blue-600 lg:text-3xl">Kategori</h2>
 
-      <div id="categoriesSlider" class="relative">
+      <div id="categoriesSlider" class="relative w-full h-fit flex flex-row flex-wrap gap-2.5">
         @forelse ($categories as $category)
           <a href="{{ route('category', $category->id) }}" class="text-base font-semibold truncate">
             <div
-              class="inline-flex gap-2.5 items-center py-3 px-3.5 bg-white rounded-xl mr-4 border border-gray-200 shadow-sm">
+              class="inline-flex gap-2.5 items-center py-3  px-3 w-36 bg-white rounded-xl border border-gray-200 shadow-sm">
               <img src="{{ Storage::url($category->icon) }}" class="w-10 h-10 object-cover" alt="{{ $category->name }}">
               {{ $category->name }}
             </div>
